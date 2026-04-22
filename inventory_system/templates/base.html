@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventory SaaS{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Load Feather Icons for elegant UI icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <i data-feather="box"></i> Parvam SaaS
+            </div>
+            
+            <nav>
+                <a href="/" class="sidebar-nav-item {% if request.path == '/' %}active{% endif %}">
+                    <i data-feather="grid" style="margin-right: 12px; width: 18px;"></i> Dashboard
+                </a>
+                
+                {% if session.get('role') == 'admin' %}
+                <a href="/admin" class="sidebar-nav-item {% if request.path == '/admin' %}active{% endif %}">
+                    <i data-feather="settings" style="margin-right: 12px; width: 18px;"></i> Admin Panel
+                </a>
+                {% endif %}
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div style="font-weight: 500; color: var(--text-muted);">
+                    Welcome back, {{ session.get('user', 'User') }}
+                </div>
+                
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        {{ session.get('user', 'U')[0]|upper }}
+                    </div>
+                    <a href="/logout" class="btn btn-secondary btn-sm" style="margin-left: 12px;">Logout</a>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <script>
+        feather.replace()
+    </script>
+</body>
+</html>

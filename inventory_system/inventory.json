@@ -1,0 +1,39 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "chips",
+            "category": "food",
+            "quantity": 10,
+            "min_threshold": 30
+        },
+        {
+            "id": 2,
+            "name": "Laptop",
+            "category": "Electronics",
+            "quantity": 15,
+            "min_threshold": 5
+        },
+        {
+            "id": 3,
+            "name": "Desk Chair",
+            "category": "Furniture",
+            "quantity": 4,
+            "min_threshold": 10
+        },
+        {
+            "id": 4,
+            "name": "Notebook",
+            "category": "Stationery",
+            "quantity": 50,
+            "min_threshold": 20
+        },
+        {
+            "id": 5,
+            "name": "Coffee Maker",
+            "category": "Appliances",
+            "quantity": 2,
+            "min_threshold": 5
+        }
+    ]
+}

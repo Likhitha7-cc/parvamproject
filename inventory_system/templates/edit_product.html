@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Product - Parvam SaaS{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div style="display: flex; align-items: center; gap: 16px;">
+        <a href="/admin" class="btn btn-secondary btn-sm" style="padding: 8px;">
+            <i data-feather="arrow-left" style="width: 16px;"></i>
+        </a>
+        <h1 class="page-title">Edit Product: {{ p.name }}</h1>
+    </div>
+</div>
+
+<div class="card" style="max-width: 600px; margin: 0 auto;">
+    <div class="card-header">
+        <div class="card-title">Product Details</div>
+    </div>
+    <div style="padding: 32px;">
+        <form method="POST">
+            <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" name="name" value="{{ p.name }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Category</label>
+                <input type="text" name="category" value="{{ p.category }}" required>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" name="quantity" value="{{ p.quantity }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Minimum Threshold</label>
+                    <input type="number" name="threshold" value="{{ p.min_threshold }}" required>
+                </div>
+            </div>
+            
+            <div class="form-actions" style="margin-top: 32px;">
+                <a href="/admin" class="btn btn-secondary" style="flex: 1; text-align: center;">Cancel</a>
+                <button type="submit" class="btn btn-primary" style="flex: 2;">
+                    <i data-feather="save" style="width: 16px; margin-right: 8px;"></i> Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Parvam SaaS{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Inventory Overview</h1>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-title">Total Products</div>
+        <div class="stat-value">{{ products|length }}</div>
+    </div>
+    <div class="stat-card" {% if low_count > 0 %}style="border-color: #fecaca; background-color: #fff5f5;"{% endif %}>
+        <div class="stat-title" {% if low_count > 0 %}style="color: #dc2626;"{% endif %}>Low Stock Alerts</div>
+        <div class="stat-value" {% if low_count > 0 %}style="color: #dc2626;"{% endif %}>{{ low_count }}</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-title">System Status</div>
+        <div class="stat-value" style="color: #059669; font-size: 24px; display: flex; align-items: center; gap: 8px;">
+            <i data-feather="check-circle"></i> Healthy
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">Current Inventory</div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+                {% for p in products %}
+                <tr>
+                    <td style="font-weight: 500;">{{ p.name }}</td>
+                    <td><span style="color: var(--text-muted);">{{ p.category }}</span></td>
+                    <td>{{ p.quantity }}</td>
+                    <td>
+                        {% if p.status == 'Low Stock' %}
+                            <span class="badge badge-danger">Low Stock</span>
+                        {% else %}
+                            <span class="badge badge-success">OK</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-muted); padding: 32px;">No products found in inventory.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

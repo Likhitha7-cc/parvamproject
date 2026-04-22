@@ -1,0 +1,19 @@
+{
+    "users": [
+        {
+            "username": "likhi",
+            "password": "liki@123",
+            "role": "admin"
+        },
+        {
+            "username": "user",
+            "password": "user123",
+            "role": "user"
+        },
+        {
+            "username": "likhitha c",
+            "password": "liki@123",
+            "role": "user"
+        }
+    ]
+}
